@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Madrid C.F. - Fan Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="navbar">
+    <div class="logo-area">
+      <span class="crest-emoji">👑</span>
+      <h1>Real Madrid C.F.</h1>
+    </div>
+    <div class="nav-controls">
+      <!-- Feature 1: Theme Switcher -->
+      <button id="themeToggleBtn" class="btn btn-secondary">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">¡Hala Madrid! ...y nada más</span>
+      <h2>Welcome to the Madridista Interactive Hub</h2>
+      <p>Explore beginner JavaScript interactive features: counters, filters, trivia quiz, and custom cheer generator!</p>
+      <!-- Feature 2: Audio/Chant Alert Button -->
+      <button id="chantBtn" class="btn btn-gold">📣 Shout Chant</button>
+      <p id="chantDisplay" class="chant-box hidden"></p>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Feature 3: Trophy Counter (Interactive Increment / Decrement / Reset) -->
+    <section class="card">
+      <div class="card-header">
+        <h3>🏆 1. Interactive Trophy Counter</h3>
+        <span class="js-tag">Numbers & DOM Manipulation</span>
+      </div>
+      <p class="section-desc">Test JavaScript variables, incrementing, decrementing, and conditional limits.</p>
+      
+      <div class="counter-box">
+        <p class="counter-label">UEFA Champions League Titles Counter</p>
+        <div class="counter-number" id="trophyCount">15</div>
+        <div class="counter-actions">
+          <button id="minusTrophyBtn" class="btn btn-small">- Minus</button>
+          <button id="resetTrophyBtn" class="btn btn-outline btn-small">Reset to 15</button>
+          <button id="addTrophyBtn" class="btn btn-gold btn-small">+ Win Next Title!</button>
+        </div>
+        <p id="trophyMessage" class="status-msg">Real Madrid currently holds the record with 15 European Cups!</p>
+      </div>
+    </section>
+
+    <!-- Feature 4: Dynamic Player Filter & Search (Arrays, Objects, DOM Rendering) -->
+    <section class="card">
+      <div class="card-header">
+        <h3>⚽ 2. Player Roster & Position Filter</h3>
+        <span class="js-tag">Arrays, Array Methods (.filter) & DOM Rendering</span>
+      </div>
+      <p class="section-desc">Filter through players by position or search by name in real-time using input events.</p>
+
+      <div class="filter-controls">
+        <input type="text" id="playerSearchInput" placeholder="🔍 Search player by name..." class="input-text">
+        <div class="filter-buttons" id="positionButtons">
+          <button class="filter-btn active" data-position="All">All</button>
+          <button class="filter-btn" data-position="Goalkeeper">Goalkeepers</button>
+          <button class="filter-btn" data-position="Defender">Defenders</button>
+          <button class="filter-btn" data-position="Midfielder">Midfielders</button>
+          <button class="filter-btn" data-position="Forward">Forwards</button>
+        </div>
+      </div>
+
+      <!-- Container where JS renders player cards dynamically -->
+      <div id="playerGrid" class="player-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Feature 5: Real Madrid Trivia Quiz (Conditionals, State, Score Tracking) -->
+    <section class="card">
+      <div class="card-header">
+        <h3>❓ 3. Madridista Quick Quiz</h3>
+        <span class="js-tag">Conditionals, Loops & Score Tracking</span>
+      </div>
+      <p class="section-desc">Answer 3 simple questions to test your knowledge.</p>
+
+      <div id="quizContainer" class="quiz-box">
+        <div class="quiz-progress">
+          Question <span id="currentQuestionNum">1</span> of <span id="totalQuestionsNum">3</span>
+        </div>
+        <h4 id="questionText" class="quiz-question">Question goes here...</h4>
+        <div id="optionsContainer" class="options-container">
+          <!-- Rendered by JS -->
+        </div>
+        <p id="quizFeedback" class="feedback-msg"></p>
+        <button id="nextQuestionBtn" class="btn btn-primary hidden">Next Question ➡️</button>
+      </div>
+
+      <div id="quizResultBox" class="quiz-result hidden">
+        <h4>🎉 Quiz Finished!</h4>
+        <p id="quizFinalScore"></p>
+        <button id="restartQuizBtn" class="btn btn-gold">Play Again</button>
+      </div>
+    </section>
+
+    <!-- Feature 6: Fan Message Board / Form Handling (Events & createElement) -->
+    <section class="card">
+      <div class="card-header">
+        <h3>💬 4. Fan Message Board</h3>
+        <span class="js-tag">Forms, Events & Dynamic Elements</span>
+      </div>
+      <p class="section-desc">Leave your message for the team. Added instantly to the board without page reload!</p>
+
+      <form id="fanForm" class="fan-form">
+        <div class="form-group">
+          <label for="fanName">Your Name:</label>
+          <input type="text" id="fanName" placeholder="e.g. Carlos or Sarah" required class="input-text">
+        </div>
+        <div class="form-group">
+          <label for="fanMessage">Your Message / Cheer:</label>
+          <textarea id="fanMessage" rows="3" placeholder="e.g. ¡A por la 16! Best club in history!" required class="input-text"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post Message</button>
+      </form>
+
+      <div class="messages-container">
+        <h4>Fan Wall</h4>
+        <ul id="messagesList" class="messages-list">
+          <!-- Initial default messages -->
+          <li class="message-item">
+            <strong>Luka (Croatia):</strong>
+            <p>Hala Madrid forever! Thank you for the memories.</p>
+            <span class="timestamp">Just now</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Made for Real Madrid fans. Crafted with pure HTML, CSS, and Beginner JavaScript ⚽</p>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
+
